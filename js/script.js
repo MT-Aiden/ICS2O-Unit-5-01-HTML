@@ -1,18 +1,47 @@
 //Made by: Aiden McLeod
 //Made in: March 2022
 
-'use strict'
+"use strict"
+
 /**
- * This function calculates area of a sphere.
+ * Check service worker.
  */
-function calculate() {
-  // input
-  const radius = parseInt(document.getElementById('radius').value)
+ if (navigator.serviceWorker) {
+  navigator.serviceWorker.register("/ICS2O-UNIT-5-01-HTML/sw.js", {
+    scope: "/ICS2O-UNIT-5-01-HTML/",
+  })
+}
+/**
+ * This function generates a random number
+ */
 
-  // process
+const randomNumber = Math.floor(Math.random() * 6) + 1
 
-  const volume = (4/3)* Math.PI * Math.pow(radius, 3);
+/**
+ * This function updates the slider value.
+ */
+ function updateSliderValue(valueFromSlider) {
+  document.getElementById("slider-value").innerHTML = valueFromSlider
+}
 
-  // output
-  document.getElementById('volume').innerHTML = 'Volume is: ' + volume.toFixed(2) + ' cm³'
+console.log(randomNumber)
+
+/**
+ * This function compares slider with random number.
+ */
+function buttonClicked() {
+  const sliderValue = slider.value
+
+  //  block of code to be executed if slider is == to randomNumber
+
+  
+  if (sliderValue == randomNumber) {
+    document.getElementById("answer").innerHTML =
+      "Answer is " + randomNumber + ". Correct!"
+  }
+  //  block of code to be executed if slider is != to randomNumber
+  if (sliderValue != randomNumber) {
+    document.getElementById("answer").innerHTML =
+      "Answer is " + randomNumber + ". Incorrect..."
+  }
 }
